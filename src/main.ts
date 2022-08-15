@@ -1,13 +1,11 @@
 import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AgariComponent } from './app/agari.component';
 
-import { AgariModule } from './app/agari.module';
 import { environment } from './environments/environment';
 
 if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic()
-  .bootstrapModule(AgariModule)
-  .catch((err) => console.error(err));
+bootstrapApplication(AgariComponent).catch(console.error);
