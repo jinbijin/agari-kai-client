@@ -8,5 +8,6 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AgariModule)
-  .catch(err => console.error(err));
+platformBrowserDynamic()
+  .bootstrapModule(AgariModule)
+  .catch((err) => console.error(err));

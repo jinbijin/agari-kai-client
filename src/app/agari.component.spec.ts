@@ -5,12 +5,8 @@ import { AgariComponent } from './agari.component';
 describe('AgariComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AgariComponent
-      ],
+      imports: [RouterTestingModule],
+      declarations: [AgariComponent],
     }).compileComponents();
   });
 
