@@ -1,0 +1,3 @@
+# Angular build cache
+.angular/
+package-lock.json
