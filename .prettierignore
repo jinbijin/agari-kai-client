@@ -1,3 +1,6 @@
 # Angular build cache
 .angular/
+# Build artifacts
+dist/
+# Generated files
 package-lock.json
