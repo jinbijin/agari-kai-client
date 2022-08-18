@@ -18,7 +18,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "cypress:open": "ng run agari-kai-client:cypress-open",
-    "cypress:run": "ng run agari-kai-client:cypress-run"
+    "cypress:run": "ng run agari-kai-client:cypress-run",
+    "cypress:staging": "ng run agari-kai-client:cypress-staging"
   },
   "jest": {
     "preset": "jest-preset-angular",

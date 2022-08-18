@@ -38,6 +38,8 @@ jobs:
     needs: build_verification_job
     runs-on: ubuntu-latest
     name: Build and deploy job
+    outputs:
+      static_web_app_url: ${{ steps.builddeploy.outputs.static_web_app_url }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -53,6 +55,18 @@ jobs:
           app_location: '/'
           api_location: '' # Api in separate repo
           output_location: 'dist/agari-kai-client'
+
+  deployment_verification_job:
+    if: github.event_name == 'pull_request' && github.event.action != 'closed'
+    needs: build_and_deploy_job
+    runs-on: ubuntu-latest
+    name: Deployment verification
+    env:
+      CYPRESS_BASE_URL: ${{ needs.build_and_deploy_job.outputs.static_web_app_url }}
+      CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+    steps:
+      - name: Run end-to-end tests
+        uses: cypress-io/github-action@v2
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'

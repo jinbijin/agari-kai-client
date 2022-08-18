@@ -97,6 +97,9 @@
             "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         },
+        "cypress-staging": {
+          "builder": "@cypress/schematic:cypress"
+        },
         "cypress-run": {
           "builder": "@cypress/schematic:cypress",
           "options": {
