@@ -98,7 +98,10 @@
           }
         },
         "cypress-staging": {
-          "builder": "@cypress/schematic:cypress"
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "record": true
+          }
         },
         "cypress-run": {
           "builder": "@cypress/schematic:cypress",
