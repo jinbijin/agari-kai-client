@@ -74,6 +74,8 @@ jobs:
           submodules: true
       - name: Run end-to-end tests
         uses: cypress-io/github-action@v4
+        with:
+          record: true
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
