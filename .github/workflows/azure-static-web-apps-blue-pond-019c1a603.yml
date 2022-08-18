@@ -37,7 +37,6 @@ jobs:
 
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
-    needs: build_verification_job
     runs-on: ubuntu-latest
     name: Build and deploy job
     outputs:
