@@ -5,8 +5,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:ci": "ng build --configuration development",
+    "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "jest",
+    "test:ci": "jest --ci",
+    "format:check": "prettier . --check",
     "lint": "ng lint"
   },
   "jest": {
