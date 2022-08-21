@@ -1,6 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'M PLUS 2';
+  src: url('./assets/fonts/MPLUS2-VariableFont_wght.ttf') format('truetype');
+}
 
 :root {
+  font-family: 'M PLUS 2';
+
   --color-primary: #365ca8;
   --color-on-primary: #ffffff;
   --color-primary-container: #d9e2ff;
