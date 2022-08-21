@@ -1,1 +1,62 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --color-primary: #365ca8;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #d9e2ff;
+  --color-on-primary-container: #001944;
+
+  --color-secondary: #575e71;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #dbe2f9;
+  --color-on-secondary-container: #141b2c;
+
+  --color-tertiary: #4a6700;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #bff44f;
+  --color-on-tertiary-container: #141f00;
+
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #410002;
+
+  --color-background: #fefbff;
+  --color-on-background: #1b1b1f;
+  --color-surface: #fefbff;
+  --color-on-surface: #1b1b1f;
+  --color-outline: #757780;
+  --color-surface-variant: #e1e2ec;
+  --color-on-surface-variant: #44464f;
+}
+
+// API for theme switching is undefined, so here's a container for the dark theme values
+.theme-dark {
+  --color-primary: #afc6ff;
+  --color-on-primary: #002d6d;
+  --color-primary-container: #17438f;
+  --color-on-primary-container: #d9e2ff;
+
+  --color-secondary: #bfc6dc;
+  --color-on-secondary: #293042;
+  --color-secondary-container: #404659;
+  --color-on-secondary-container: #dbe2f9;
+
+  --color-tertiary: #a4d733;
+  --color-on-tertiary: #253600;
+  --color-tertiary-container: #374e00;
+  --color-on-tertiary-container: #bff44f;
+
+  --color-error: #ffb4ab;
+  --color-on-error: #690005;
+  --color-error-container: #93000a;
+  --color-on-error-container: #ffdad6;
+
+  --color-background: #1b1b1f;
+  --color-on-background: #e3e2e6;
+  --color-surface: #1b1b1f;
+  --color-on-surface: #e3e2e6;
+  --color-outline: #8f9099;
+  --color-surface-variant: #44464f;
+  --color-on-surface-variant: #c5c6d0;
+}
