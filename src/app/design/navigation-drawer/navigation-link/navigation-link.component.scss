@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  width: 20.5rem;
+  border-radius: 1.75rem;
+  padding: 0 1.5rem 0 3rem;
+  margin: 0 -0.75rem;
+  line-height: 3.5rem;
+
+  &:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 1.75rem;
+
+    background-color: var(--color-on-surface);
+    opacity: 0.12;
+  }
+}

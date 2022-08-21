@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationLinkComponent } from './navigation-link/navigation-link.component';
 
 @Component({
   standalone: true,
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   selector: 'aside[agariNavigationDrawer]',
   templateUrl: './navigation-drawer.component.html',
   styleUrls: ['./navigation-drawer.component.scss'],
+  imports: [NavigationLinkComponent],
 })
 export class NavigationDrawerComponent {}
