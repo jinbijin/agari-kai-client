@@ -1,7 +1,4 @@
-@font-face {
-  font-family: 'M PLUS 2';
-  src: url('./assets/fonts/MPLUS2-VariableFont_wght.ttf') format('truetype');
-}
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+2:wght@100..900&display=swap');
 
 html,
 body {
@@ -12,7 +9,7 @@ body {
 }
 
 :root {
-  font-family: 'M PLUS 2';
+  font-family: 'M PLUS 2', sans-serif;
 
   --color-primary: #365ca8;
   --color-on-primary: #ffffff;
