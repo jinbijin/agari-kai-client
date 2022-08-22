@@ -1,9 +1,13 @@
 <h1>agari-kai</h1>
 <ul>
   <li>
-    <a agariNavigationLink><agari-icon icon="home"></agari-icon> Home</a>
+    <a agariNavigationLink routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+      ><agari-icon icon="home"></agari-icon>Home</a
+    >
   </li>
   <li>
-    <a agariNavigationLink><agari-icon icon="arrow_forward"></agari-icon> Tournament scheduler</a>
+    <a agariNavigationLink routerLink="/scheduler" routerLinkActive="active"
+      ><agari-icon icon="arrow_forward"></agari-icon>Tournament scheduler</a
+    >
   </li>
 </ul>
