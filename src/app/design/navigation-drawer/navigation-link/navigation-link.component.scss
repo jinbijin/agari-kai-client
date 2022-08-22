@@ -4,9 +4,16 @@
   box-sizing: border-box;
   width: 20.5rem;
   border-radius: 1.75rem;
-  padding: 0 1.5rem 0 3rem;
+  padding: 0 1.5rem 0 0.75rem;
   margin: 0 -0.75rem;
   line-height: 3.5rem;
+  font-weight: 500;
+
+  transition: font-weight 0.2s;
+
+  &:hover {
+    font-weight: 600;
+  }
 
   &:hover::after {
     content: '';

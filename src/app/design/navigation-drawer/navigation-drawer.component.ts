@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { IconComponent } from '../icon/icon.component';
 import { NavigationLinkComponent } from './navigation-link/navigation-link.component';
 
 @Component({
@@ -7,6 +8,6 @@ import { NavigationLinkComponent } from './navigation-link/navigation-link.compo
   selector: 'aside[agariNavigationDrawer]',
   templateUrl: './navigation-drawer.component.html',
   styleUrls: ['./navigation-drawer.component.scss'],
-  imports: [NavigationLinkComponent],
+  imports: [NavigationLinkComponent, IconComponent],
 })
 export class NavigationDrawerComponent {}
