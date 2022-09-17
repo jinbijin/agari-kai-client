@@ -7,7 +7,6 @@ import { AGARI_ROUTES, PROVIDE_AGARI_ROUTES } from './tokens/agari-routes.token'
 
 @NgModule({
   imports: [RouterModule.forRoot([])],
-  exports: [RouterModule],
   providers: [
     AgariTitleRenderer,
     { provide: TitleStrategy, useClass: AgariTitleStrategy },
