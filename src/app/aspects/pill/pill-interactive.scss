@@ -11,15 +11,24 @@
     background-color: var(--color-on-surface);
     opacity: 0;
 
-    transition: opacity 0.2s;
+    transition: opacity var(--state-transition-duration);
   }
 
   &:hover,
-  &:focus {
-    font-weight: 600;
+  &:focus,
+  &:active {
+    font-weight: var(--pill-font-weight--accent);
+  }
 
-    &::before {
-      opacity: 0.12;
-    }
+  &:hover::before {
+    opacity: var(--state-hover-opacity);
+  }
+
+  &:focus::before {
+    opacity: var(--state-focus-opacity);
+  }
+
+  &:active::before {
+    opacity: var(--state-active-opacity);
   }
 }

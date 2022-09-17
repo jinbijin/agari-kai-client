@@ -10,7 +10,7 @@
 }
 
 :host-context(.active) {
-  font-weight: 600;
+  font-weight: var(--pill-font-weight--accent);
 
   background-color: var(--color-secondary-container);
   color: var(--color-on-secondary-container);

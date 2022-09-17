@@ -32,6 +32,11 @@
   --color-outline: #757780;
   --color-surface-variant: #e1e2ec;
   --color-on-surface-variant: #44464f;
+
+  --state-hover-opacity: 0.08;
+  --state-focus-opacity: 0.12;
+  --state-active-opacity: 0.12;
+  --state-transition-duration: 0.2s;
 }
 
 // API for theme switching is undefined, so here's a container for the dark theme values
