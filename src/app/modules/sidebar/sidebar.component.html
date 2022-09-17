@@ -5,7 +5,7 @@
         agariNavigationLink
         [routerLink]="navigationItem.routerLink"
         routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: navigationItem.routeExact }"
+        [routerLinkActiveOptions]="navigationItem.routerLinkActiveOptions"
         ><agari-icon *ngIf="navigationItem.icon as icon" [icon]="icon"></agari-icon>{{ navigationItem.label }}</a
       >
     </li>

@@ -26,7 +26,7 @@ import { AgariTitleStrategy } from './agari.title-strategy';
             icon: agariRoute.data.menu.icon,
             label: agariRoute.data.menu.label,
             routerLink: agariRoute.path ? ['/', agariRoute.path] : ['/'],
-            routeExact: agariRoute.pathMatch === 'full',
+            routerLinkActiveOptions: { exact: agariRoute.pathMatch === 'full' },
           }))
         ),
       deps: [AGARI_ROUTES],

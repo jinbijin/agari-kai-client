@@ -1,6 +1,8 @@
+import { RouterLinkActive } from '@angular/router';
+
 export interface AgariNavigationItem {
   icon?: string;
   label: string;
   routerLink: (string | number)[];
-  routeExact: boolean;
+  routerLinkActiveOptions: RouterLinkActive['routerLinkActiveOptions'];
 }
