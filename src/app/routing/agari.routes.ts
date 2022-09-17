@@ -1,5 +1,5 @@
 import { UnderConstructionComponent } from '../modules/under-construction/under-construction.component';
-import { AgariRoute } from './agari-route.type';
+import { AgariRoute } from './tokens/agari-route.type';
 
 export const agariRoutes: AgariRoute[] = [
   { path: '', pathMatch: 'full', component: UnderConstructionComponent, data: { menu: { icon: 'home', label: 'Home' } } },

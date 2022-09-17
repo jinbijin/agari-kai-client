@@ -3,7 +3,7 @@ import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { IconComponent } from 'src/app/design/icon/icon.component';
 import { NavigationModule } from 'src/app/design/navigation/navigation.module';
-import { AGARI_NAVIGATION_ITEMS } from 'src/app/routing/agari-navigation-items.token';
+import { AGARI_NAVIGATION_ITEMS } from 'src/app/routing/tokens/agari-navigation-items.token';
 
 @Component({
   standalone: true,
