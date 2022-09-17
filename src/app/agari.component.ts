@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AgariRoutingModule } from './agari.routing-module';
+import { RouterModule } from '@angular/router';
 import { NavigationDrawerComponent } from './design/navigation-drawer/navigation-drawer.component';
 
 @Component({
@@ -7,8 +7,6 @@ import { NavigationDrawerComponent } from './design/navigation-drawer/navigation
   selector: 'agari-root',
   templateUrl: './agari.component.html',
   styleUrls: ['./agari.component.scss'],
-  imports: [NavigationDrawerComponent, AgariRoutingModule],
+  imports: [NavigationDrawerComponent, RouterModule],
 })
-export class AgariComponent {
-  title = 'agari-kai-client';
-}
+export class AgariComponent {}
