@@ -1,14 +1,16 @@
 :host {
   display: grid;
   box-sizing: border-box;
-  width: 20.5rem;
-  padding: 0 1.5rem 0 0.75rem;
-  margin: 0 -0.75rem;
-  gap: 0.75rem;
+  width: calc(var(--navigation-drawer-width) - 2 * var(--navigation-drawer-padding-side) + 2 * var(--navigation-link-spacer));
+  padding: 0 var(--navigation-link-spacer);
+  margin: 0 calc(-1 * var(--navigation-link-spacer));
+  gap: var(--navigation-link-spacer);
 
-  grid-template-columns: 1.5rem 1fr;
+  grid-template-columns: var(--icon-width) 1fr;
 
-  --pill-height: 3.5rem;
+  --pill-height: 2.5rem;
+
+  --navigation-link-spacer: var(--spacer-small);
 
   > span {
     grid-column: 2;

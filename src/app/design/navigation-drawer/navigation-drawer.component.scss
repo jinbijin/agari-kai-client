@@ -3,9 +3,12 @@
   color: var(--color-on-surface-variant);
   box-sizing: border-box;
   height: 100%;
-  width: 22.5rem;
+  width: var(--navigation-drawer-width);
   border-radius: 0 1rem 1rem 0;
-  padding: 0 1.75rem;
+  padding: 0 var(--navigation-drawer-padding-side);
+
+  --navigation-drawer-width: 20rem;
+  --navigation-drawer-padding-side: 1.75rem;
 }
 
 h1 {
