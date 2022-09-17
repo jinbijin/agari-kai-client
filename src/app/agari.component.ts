@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NavigationDrawerComponent } from './design/navigation-drawer/navigation-drawer.component';
+import { AgariSidebarComponent } from './modules/sidebar/sidebar.component';
 
 @Component({
   standalone: true,
   selector: 'agari-root',
   templateUrl: './agari.component.html',
   styleUrls: ['./agari.component.scss'],
-  imports: [NavigationDrawerComponent, RouterModule],
+  imports: [AgariSidebarComponent, RouterModule],
 })
 export class AgariComponent {}
