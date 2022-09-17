@@ -6,6 +6,7 @@ import { AgariComponent } from './agari.component';
 import { AgariSidebarComponent } from './modules/sidebar/sidebar.component';
 
 @Component({
+  standalone: true,
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'aside[agariSidebar]',
   template: '',
