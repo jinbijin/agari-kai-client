@@ -1,0 +1,9 @@
+:host {
+  position: relative;
+
+  font-weight: 500;
+  border-radius: calc(0.5 * var(--pill-height));
+  line-height: var(--pill-height);
+
+  transition: font-weight 0.2s, background-color 0.2s, color 0.2s;
+}
