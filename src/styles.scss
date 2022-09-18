@@ -41,6 +41,8 @@
   --spacer-small: 0.5rem;
 
   --icon-width: 1.5rem;
+
+  --h1-line-height: 4rem;
 }
 
 // API for theme switching is undefined, so here's a container for the dark theme values
@@ -72,4 +74,23 @@
   --color-outline: #8f9099;
   --color-surface-variant: #44464f;
   --color-on-surface-variant: #c5c6d0;
+}
+
+h1 {
+  display: block;
+  font-size: 1.5rem;
+  line-height: var(--h1-line-height);
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: 600;
+}
+
+:is(aside, article, nav, section) h1 {
+  font-size: 1.35rem;
+}
+
+:is(aside, article, nav, section) :is(aside, article, nav, section) h1 {
+  font-size: 1.2rem;
 }
