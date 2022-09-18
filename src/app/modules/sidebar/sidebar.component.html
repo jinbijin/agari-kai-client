@@ -1,15 +1,16 @@
-<nav agariNavigationDrawer *ngIf="navigationItems$ | async as navigationItems">
+<nav agariNavigationDrawer>
   <agari-navigation-header>
     <h1>agari-kai</h1>
   </agari-navigation-header>
   <agari-navigation-content>
-    <ul>
+    <ul *ngIf="navigationItems$ | async as navigationItems">
       <li *ngFor="let navigationItem of navigationItems">
         <a
           agariNavigationLink
           [routerLink]="navigationItem.routerLink"
           routerLinkActive="active"
           [routerLinkActiveOptions]="navigationItem.routerLinkActiveOptions"
+          data-test-id="navigation-link"
           ><agari-icon *ngIf="navigationItem.icon as icon" [icon]="icon"></agari-icon>{{ navigationItem.label }}</a
         >
       </li>
