@@ -3,6 +3,7 @@ import { Route } from '@angular/router';
 export interface AgariMenuData {
   icon?: string;
   label: string;
+  testId: string;
 }
 
 export interface AgariRouteData {

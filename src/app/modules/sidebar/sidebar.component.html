@@ -10,7 +10,7 @@
           [routerLink]="navigationItem.routerLink"
           routerLinkActive="active"
           [routerLinkActiveOptions]="navigationItem.routerLinkActiveOptions"
-          data-test-id="navigation-link"
+          attr.data-test-id="navigation-link-{{ navigationItem.testId }}"
           ><agari-icon *ngIf="navigationItem.icon as icon" [icon]="icon"></agari-icon>{{ navigationItem.label }}</a
         >
       </li>

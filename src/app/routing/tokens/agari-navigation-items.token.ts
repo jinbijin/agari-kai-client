@@ -13,6 +13,7 @@ function createNavigationItems(agariRoutes: AgariRoute[]): Observable<AgariNavig
     agariRoutes.map((agariRoute) => ({
       icon: agariRoute.data.menu.icon,
       label: agariRoute.data.menu.label,
+      testId: `${agariRoute.data.menu.testId}`,
       routerLink: agariRoute.path ? ['/', agariRoute.path] : ['/'],
       routerLinkActiveOptions: { exact: agariRoute.pathMatch === 'full' },
     }))

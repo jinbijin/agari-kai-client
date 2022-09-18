@@ -11,8 +11,8 @@ describe('AGARI_NAVIGATION_ITEMS', () => {
         {
           provide: AGARI_ROUTES,
           useValue: [
-            { path: '', pathMatch: 'full', data: { menu: { icon: 'home', label: 'Home' } } },
-            { path: 'iconless', data: { menu: { label: 'Iconless' } } },
+            { path: '', pathMatch: 'full', data: { menu: { icon: 'home', label: 'Home', testId: 'home' } } },
+            { path: 'iconless', data: { menu: { label: 'Iconless', testId: 'without-icon' } } },
           ],
         },
       ],
@@ -31,8 +31,13 @@ describe('AGARI_NAVIGATION_ITEMS', () => {
     testScheduler.run(({ expectObservable }) => {
       expectObservable(navigationItems$).toBe('(a|)', {
         a: [
-          { icon: 'home', label: 'Home', routerLink: ['/'], routerLinkActiveOptions: { exact: true } },
-          { label: 'Iconless', routerLink: ['/', 'iconless'], routerLinkActiveOptions: { exact: false } },
+          { icon: 'home', label: 'Home', testId: 'home', routerLink: ['/'], routerLinkActiveOptions: { exact: true } },
+          {
+            label: 'Iconless',
+            testId: 'without-icon',
+            routerLink: ['/', 'iconless'],
+            routerLinkActiveOptions: { exact: false },
+          },
         ],
       });
     });

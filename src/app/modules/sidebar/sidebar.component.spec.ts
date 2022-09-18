@@ -16,8 +16,8 @@ describe('AgariSidebarComponent', () => {
         {
           provide: AGARI_NAVIGATION_ITEMS,
           useValue: of<AgariNavigationItem[]>([
-            { icon: 'home', label: 'Home', routerLink: ['/'], routerLinkActiveOptions: { exact: true } },
-            { label: 'Iconless', routerLink: ['/', 'iconless'], routerLinkActiveOptions: { exact: false } },
+            { icon: 'home', label: 'Home', testId: 'home', routerLink: ['/'], routerLinkActiveOptions: { exact: true } },
+            { label: 'Iconless', testId: 'iconless', routerLink: ['/', 'iconless'], routerLinkActiveOptions: { exact: false } },
           ]),
         },
       ],
@@ -36,7 +36,7 @@ describe('AgariSidebarComponent', () => {
     const fixture = TestBed.createComponent(AgariSidebarComponent);
     fixture.detectChanges();
 
-    const linkElements = fixture.debugElement.queryAll(By.css('[data-test-id="navigation-link"]'));
+    const linkElements = fixture.debugElement.queryAll(By.css('[data-test-id^="navigation-link"]'));
     expect(linkElements.length).toBe(2);
   });
 
@@ -44,7 +44,7 @@ describe('AgariSidebarComponent', () => {
     const fixture = TestBed.createComponent(AgariSidebarComponent);
     fixture.detectChanges();
 
-    const linkElements = fixture.debugElement.queryAll(By.css('[data-test-id="navigation-link"]'));
+    const linkElements = fixture.debugElement.queryAll(By.css('[data-test-id^="navigation-link"]'));
     const iconElements: (IconComponent | undefined)[] = linkElements.map(
       (linkElement) => linkElement.query(By.directive(IconComponent))?.componentInstance
     );
@@ -56,7 +56,7 @@ describe('AgariSidebarComponent', () => {
     const fixture = TestBed.createComponent(AgariSidebarComponent);
     fixture.detectChanges();
 
-    const linkElements = fixture.debugElement.queryAll(By.css('[data-test-id="navigation-link"]'));
+    const linkElements = fixture.debugElement.queryAll(By.css('[data-test-id^="navigation-link"]'));
     const labelElements: (HTMLElement | undefined)[] = linkElements.map((linkElement) => linkElement.query(By.css('span'))?.nativeElement);
     const labels = labelElements.map((labelElement) => labelElement?.textContent?.trim());
     expect(labels).toEqual(['Home', 'Iconless']);
