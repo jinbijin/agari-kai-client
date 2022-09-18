@@ -1,0 +1,13 @@
+:host {
+  position: relative;
+
+  font-weight: var(--pill-font-weight);
+  border-radius: calc(0.5 * var(--pill-height));
+  line-height: var(--pill-height);
+
+  transition: font-weight var(--state-transition-duration), background-color var(--state-transition-duration),
+    color var(--state-transition-duration);
+
+  --pill-font-weight: 500;
+  --pill-font-weight--accent: 600;
+}
