@@ -2,5 +2,7 @@
 .angular/
 # Build artifacts
 dist/
+# Coverage results
+coverage/
 # Generated files
 package-lock.json

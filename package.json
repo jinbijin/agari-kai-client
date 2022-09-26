@@ -16,6 +16,7 @@
     "test:ci": "jest --ci",
     "test:coverage": "jest --coverage",
     "format:check": "prettier . --check",
+    "format:fix": "prettier . --write",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "cypress:open": "ng run agari-kai-client:cypress-open",
@@ -41,6 +42,7 @@
     "@angular/platform-browser": "^14.2.3",
     "@angular/platform-browser-dynamic": "^14.2.3",
     "@angular/router": "^14.2.3",
+    "@angular/service-worker": "^14.2.3",
     "rxjs": "~7.5.7",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
