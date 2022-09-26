@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AgariComponent } from './agari.component';
-import { AgariSidebarComponent } from './modules/sidebar/sidebar.component';
 
 @Component({
   standalone: true,
@@ -16,12 +14,8 @@ class SidebarStubComponent {}
 describe('AgariComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [AgariComponent],
-    });
-
-    TestBed.overrideComponent(AgariComponent, {
-      remove: { imports: [AgariSidebarComponent, RouterModule] },
-      add: { imports: [SidebarStubComponent, RouterTestingModule] },
+      declarations: [AgariComponent],
+      imports: [SidebarStubComponent, RouterTestingModule],
     });
 
     await TestBed.compileComponents();
