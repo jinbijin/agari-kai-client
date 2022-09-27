@@ -1,6 +1,11 @@
 <nav agariNavigationDrawer>
   <agari-navigation-header>
     <h1>agari-kai</h1>
+    {{ currentVersion }}
+    <button agariButton *ngIf="versionStatusService.incomingVersion$ | async as incomingVersion" (click)="reload()">
+      <agari-icon icon="done"></agari-icon>
+      {{ incomingVersion.version }}
+    </button>
   </agari-navigation-header>
   <agari-navigation-content>
     <ul *ngIf="navigationItems$ | async as navigationItems">

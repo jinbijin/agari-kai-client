@@ -1,0 +1,22 @@
+:host {
+  padding: 0 var(--spacer) 0 var(--button-spacer);
+  top: 0.15rem;
+
+  vertical-align: baseline;
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+
+  --button-spacer: var(--spacer-small);
+  --pill-height: 2rem;
+  --pill-font-weight: 400 !important;
+  --pill-font-weight--accent: 400 !important;
+
+  > * {
+    display: grid;
+    vertical-align: baseline;
+    box-sizing: border-box;
+    gap: var(--button-spacer);
+
+    grid-template-columns: var(--icon-width) 1fr;
+  }
+}
