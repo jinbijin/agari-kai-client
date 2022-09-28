@@ -1,4 +1,12 @@
-<aside agariSidebar></aside>
-<main>
-  <router-outlet></router-outlet>
-</main>
+<mat-drawer-container class="container">
+  <mat-drawer mode="side" opened class="sidebar">
+    <aside>
+      <router-outlet name="left"></router-outlet>
+    </aside>
+  </mat-drawer>
+  <mat-drawer-content>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-drawer-content>
+</mat-drawer-container>

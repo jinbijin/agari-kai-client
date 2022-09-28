@@ -1,24 +1,26 @@
-<nav agariNavigationDrawer>
-  <agari-navigation-header>
-    <h1>agari-kai</h1>
-    {{ currentVersion }}
-    <button agariButton *ngIf="versionStatusService.incomingVersion$ | async as incomingVersion" (click)="reload()">
-      <agari-icon icon="done"></agari-icon>
-      {{ incomingVersion.version }}
-    </button>
-  </agari-navigation-header>
-  <agari-navigation-content>
-    <ul *ngIf="navigationItems$ | async as navigationItems">
-      <li *ngFor="let navigationItem of navigationItems">
-        <a
-          agariNavigationLink
-          [routerLink]="navigationItem.routerLink"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="navigationItem.routerLinkActiveOptions"
-          attr.data-test-id="navigation-link-{{ navigationItem.testId }}"
-          ><agari-icon *ngIf="navigationItem.icon as icon" [icon]="icon"></agari-icon>{{ navigationItem.label }}</a
-        >
-      </li>
-    </ul>
-  </agari-navigation-content>
-</nav>
+<mat-nav-list *ngIf="navigationItems$ | async as navigationItems">
+  <h1 matSubheader>
+    <span>agari-kai {{ currentVersion }}</span>
+    <mat-chip-list *ngIf="versionStatusService.incomingVersion$ | async as incomingVersion">
+      <mat-chip
+        [color]="incomingVersion.status | toColor"
+        [selected]="incomingVersion.status | toActive"
+        (click)="reload(incomingVersion.status)"
+      >
+        <mat-icon matChipAvatar [attr.fontIcon]="incomingVersion.status | toIcon"></mat-icon>
+        {{ incomingVersion.version }}</mat-chip
+      >
+    </mat-chip-list>
+  </h1>
+  <a
+    *ngFor="let navigationItem of navigationItems"
+    mat-list-item
+    [routerLink]="navigationItem.routerLink"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="navigationItem.routerLinkActiveOptions"
+    attr.data-test-id="navigation-link-{{ navigationItem.testId }}"
+  >
+    <mat-icon *ngIf="navigationItem.icon as icon" matListIcon [attr.fontIcon]="icon"></mat-icon>
+    {{ navigationItem.label }}
+  </a>
+</mat-nav-list>

@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AgariComponent } from './agari.component';
 import { CoreModule } from './core/core.module';
-import { AgariSidebarComponent } from './modules/sidebar/sidebar.component';
 import { AgariRoutingModule } from './routing/agari.routing-module';
 
 @NgModule({
   declarations: [AgariComponent],
-  imports: [BrowserModule, BrowserAnimationsModule, CoreModule, AgariRoutingModule, AgariSidebarComponent],
+  imports: [BrowserModule, BrowserAnimationsModule, CoreModule, AgariRoutingModule, MatSidenavModule],
   bootstrap: [AgariComponent],
 })
 export class AgariModule {}
