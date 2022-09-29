@@ -1,6 +1,6 @@
-import { appData } from '../../ngsw-config.json';
+import config from '../../ngsw-config.json';
 
 export const environment = {
   production: true,
-  version: appData.version,
+  version: config.appData.version,
 };
