@@ -1,6 +1,7 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from 'src/environments/environment';
+import { VersionUpdateService } from './version-update.service';
 
 @NgModule({
   imports: [
@@ -11,4 +12,11 @@ import { environment } from 'src/environments/environment';
   ],
   exports: [ServiceWorkerModule],
 })
-export class PwaModule {}
+export class PwaModule {
+  static forRoot(): ModuleWithProviders<PwaModule> {
+    return {
+      ngModule: PwaModule,
+      providers: [VersionUpdateService],
+    };
+  }
+}

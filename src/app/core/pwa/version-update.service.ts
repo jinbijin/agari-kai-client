@@ -1,13 +1,10 @@
 import { inject, Injectable } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
-import { map, Observable, tap } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { IncomingVersion } from './incoming-version.type';
-import { PwaModule } from './pwa.module';
 import { VersionStatus } from './version-status.type';
 
-@Injectable({
-  providedIn: PwaModule,
-})
+@Injectable()
 export class VersionUpdateService {
   readonly #swUpdate = inject(SwUpdate);
 
@@ -32,8 +29,7 @@ export class VersionUpdateService {
             version: this.#getVersion(event.version.appData),
           };
       }
-    }),
-    tap(console.log)
+    })
   );
 
   #getVersion(appData: object | undefined): string {

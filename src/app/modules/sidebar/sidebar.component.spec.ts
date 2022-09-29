@@ -1,17 +1,20 @@
 import { TestBed } from '@angular/core/testing';
+import { MatIcon } from '@angular/material/icon';
 import { By } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
-import { IconComponent } from '../../design/icon/icon.component';
+import { VersionUpdateService } from '../../core/pwa/version-update.service';
+import { AGARI_ENVIRONMENT } from '../../core/tokens/environment.token';
 import { AgariNavigationItem } from '../../routing/tokens/agari-navigation-item.type';
 import { AGARI_NAVIGATION_ITEMS } from '../../routing/tokens/agari-navigation-items.token';
 import { AgariSidebarComponent } from './sidebar.component';
+import { SidebarModule } from './sidebar.module';
 
 describe('AgariSidebarComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [AgariSidebarComponent],
+      imports: [SidebarModule],
       providers: [
         {
           provide: AGARI_NAVIGATION_ITEMS,
@@ -20,9 +23,17 @@ describe('AgariSidebarComponent', () => {
             { label: 'Iconless', testId: 'iconless', routerLink: ['/', 'iconless'], routerLinkActiveOptions: { exact: false } },
           ]),
         },
+        {
+          provide: AGARI_ENVIRONMENT,
+          useValue: { production: false, appData: { version: '0.1.0' } },
+        },
+        {
+          provide: VersionUpdateService,
+          useClass: VersionUpdateServiceStub,
+        },
       ],
     });
-    TestBed.overrideComponent(AgariSidebarComponent, { remove: { imports: [RouterModule] }, add: { imports: [RouterTestingModule] } });
+    TestBed.overrideModule(SidebarModule, { remove: { imports: [RouterModule] }, add: { imports: [RouterTestingModule] } });
 
     await TestBed.compileComponents();
   });
@@ -45,10 +56,8 @@ describe('AgariSidebarComponent', () => {
     fixture.detectChanges();
 
     const linkElements = fixture.debugElement.queryAll(By.css('[data-test-id^="navigation-link"]'));
-    const iconElements: (IconComponent | undefined)[] = linkElements.map(
-      (linkElement) => linkElement.query(By.directive(IconComponent))?.componentInstance
-    );
-    const icons = iconElements.map((iconElement) => iconElement?.icon);
+    const iconElements: HTMLElement[] = linkElements.map((linkElement) => linkElement.query(By.directive(MatIcon))?.nativeElement);
+    const icons = iconElements.map((iconElement) => iconElement?.attributes.getNamedItem('fontIcon')?.value);
     expect(icons).toEqual(['home', undefined]);
   });
 
@@ -62,3 +71,5 @@ describe('AgariSidebarComponent', () => {
     expect(labels).toEqual(['Home', 'Iconless']);
   });
 });
+
+class VersionUpdateServiceStub {}

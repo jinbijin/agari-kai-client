@@ -1,21 +1,14 @@
-import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AgariComponent } from './agari.component';
-
-@Component({
-  standalone: true,
-  // eslint-disable-next-line @angular-eslint/component-selector
-  selector: 'aside[agariSidebar]',
-  template: '',
-})
-class SidebarStubComponent {}
 
 describe('AgariComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [AgariComponent],
-      imports: [SidebarStubComponent, RouterTestingModule],
+      imports: [NoopAnimationsModule, MatSidenavModule, RouterTestingModule],
     });
 
     await TestBed.compileComponents();
