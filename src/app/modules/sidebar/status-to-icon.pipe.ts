@@ -10,7 +10,7 @@ export class StatusToIconPipe implements PipeTransform {
       case VersionStatus.Loading:
         return 'downloading';
       case VersionStatus.Ready:
-        return 'done';
+        return 'refresh';
       case VersionStatus.Failed:
         return 'error';
     }

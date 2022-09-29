@@ -8,10 +8,11 @@ import { RouterModule } from '@angular/router';
 import { AgariSidebarComponent } from './sidebar.component';
 import { StatusToActivePipe } from './status-to-active.pipe';
 import { StatusToColorPipe } from './status-to-color.pipe';
+import { StatusToDisabledPipe } from './status-to-disabled.pipe';
 import { StatusToIconPipe } from './status-to-icon.pipe';
 
 @NgModule({
-  declarations: [AgariSidebarComponent, StatusToColorPipe, StatusToActivePipe, StatusToIconPipe],
+  declarations: [AgariSidebarComponent, StatusToColorPipe, StatusToActivePipe, StatusToDisabledPipe, StatusToIconPipe],
   imports: [CommonModule, RouterModule, MatButtonModule, MatChipsModule, MatIconModule, MatListModule],
   exports: [AgariSidebarComponent],
 })

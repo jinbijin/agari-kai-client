@@ -5,6 +5,7 @@
       <mat-chip
         [color]="incomingVersion.status | toColor"
         [selected]="incomingVersion.status | toActive"
+        [disableRipple]="incomingVersion.status | toDisabled"
         (click)="reload(incomingVersion.status)"
       >
         <mat-icon matChipAvatar [attr.fontIcon]="incomingVersion.status | toIcon"></mat-icon>
