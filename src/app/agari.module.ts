@@ -8,7 +8,7 @@ import { AgariRoutingModule } from './routing/agari.routing-module';
 
 @NgModule({
   declarations: [AgariComponent],
-  imports: [BrowserModule, BrowserAnimationsModule, CoreModule, AgariRoutingModule, MatSidenavModule],
+  imports: [BrowserModule, BrowserAnimationsModule, CoreModule.forRoot(), AgariRoutingModule.forRoot(), MatSidenavModule],
   bootstrap: [AgariComponent],
 })
 export class AgariModule {}
