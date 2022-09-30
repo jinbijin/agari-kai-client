@@ -11,7 +11,6 @@ import { AGARI_NAVIGATION_ITEMS } from 'src/app/routing/tokens/agari-navigation-
   styleUrls: ['./sidebar.component.scss'],
 })
 export class AgariSidebarComponent {
-  // TODO delay version status observable here
   readonly #versionStatusService = inject(VersionUpdateService);
   readonly #location = inject(WINDOW_LOCATION);
 

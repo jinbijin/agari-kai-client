@@ -7,6 +7,7 @@
         [selected]="incomingVersion.status | toActive"
         [disableRipple]="incomingVersion.status | toDisabled"
         (click)="reload(incomingVersion.status)"
+        data-test-id="update-chip"
       >
         <mat-icon matChipAvatar [attr.fontIcon]="incomingVersion.status | toIcon"></mat-icon>
         {{ incomingVersion.version }}</mat-chip
