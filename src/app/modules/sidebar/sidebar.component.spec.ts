@@ -6,6 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { VersionUpdateService } from '../../core/pwa/version-update.service';
 import { AGARI_ENVIRONMENT } from '../../core/tokens/environment.token';
+import { WINDOW_LOCATION } from '../../core/tokens/location.token';
 import { AgariNavigationItem } from '../../routing/tokens/agari-navigation-item.type';
 import { AGARI_NAVIGATION_ITEMS } from '../../routing/tokens/agari-navigation-items.token';
 import { AgariSidebarComponent } from './sidebar.component';
@@ -30,6 +31,10 @@ describe('AgariSidebarComponent', () => {
         {
           provide: VersionUpdateService,
           useClass: VersionUpdateServiceStub,
+        },
+        {
+          provide: WINDOW_LOCATION,
+          useClass: LocationStub,
         },
       ],
     });
@@ -73,3 +78,5 @@ describe('AgariSidebarComponent', () => {
 });
 
 class VersionUpdateServiceStub {}
+
+class LocationStub {}

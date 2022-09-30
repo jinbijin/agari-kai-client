@@ -48,6 +48,14 @@ describe('VersionUpdateService', () => {
       expectObservable(service.incomingVersion$).toBe('a', { a: { status: VersionStatus.Failed, version: '0.0.0' } });
     });
   });
+
+  it('should check for updates', () => {
+    const service = TestBed.inject(VersionUpdateService);
+    const stub = TestBed.inject(SwUpdateStub);
+
+    service.checkForUpdates();
+    expect(stub.checkForUpdate).toBeCalledTimes(1);
+  });
 });
 
 @Injectable()
@@ -60,4 +68,6 @@ class SwUpdateStub {
       return subscriber;
     });
   }
+
+  checkForUpdate = jest.fn<void, []>();
 }

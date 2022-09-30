@@ -1,7 +1,7 @@
 <mat-nav-list *ngIf="navigationItems$ | async as navigationItems">
   <h1 matSubheader>
     <span>agari-kai {{ currentVersion }}</span>
-    <mat-chip-list *ngIf="versionStatusService.incomingVersion$ | async as incomingVersion">
+    <mat-chip-list *ngIf="incomingVersion$ | async as incomingVersion">
       <mat-chip
         [color]="incomingVersion.status | toColor"
         [selected]="incomingVersion.status | toActive"

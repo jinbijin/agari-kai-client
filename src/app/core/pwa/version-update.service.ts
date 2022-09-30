@@ -32,6 +32,10 @@ export class VersionUpdateService {
     })
   );
 
+  checkForUpdates(): void {
+    this.#swUpdate.checkForUpdate();
+  }
+
   #getVersion(appData: object | undefined): string {
     return (appData as { version: string }).version;
   }
