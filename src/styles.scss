@@ -23,7 +23,7 @@ $agari-kai-client-theme: mat.define-light-theme(
 
 @include mat.all-component-themes($agari-kai-client-theme);
 
-.theme-dark {
+@media (prefers-color-scheme: dark) {
   $agari-kai-client-dark-theme: mat.define-dark-theme(
     (
       color: (
