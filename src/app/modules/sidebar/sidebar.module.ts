@@ -5,11 +5,11 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
+import { StatusToActivePipe } from './pipes/status-to-active.pipe';
+import { StatusToColorPipe } from './pipes/status-to-color.pipe';
+import { StatusToDisabledPipe } from './pipes/status-to-disabled.pipe';
+import { StatusToIconPipe } from './pipes/status-to-icon.pipe';
 import { AgariSidebarComponent } from './sidebar.component';
-import { StatusToActivePipe } from './status-to-active.pipe';
-import { StatusToColorPipe } from './status-to-color.pipe';
-import { StatusToDisabledPipe } from './status-to-disabled.pipe';
-import { StatusToIconPipe } from './status-to-icon.pipe';
 
 @NgModule({
   declarations: [AgariSidebarComponent, StatusToColorPipe, StatusToActivePipe, StatusToDisabledPipe, StatusToIconPipe],
