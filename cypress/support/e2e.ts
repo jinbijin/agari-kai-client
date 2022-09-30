@@ -15,3 +15,11 @@
 
 // When a command from ./commands is ready to use, import with `import './commands'` syntax
 // import './commands';
+
+beforeEach(() => {
+  if (window.navigator && 'serviceWorker' in window.navigator) {
+    window.navigator.serviceWorker.getRegistrations().then((rs) => {
+      rs.forEach((r) => r.unregister());
+    });
+  }
+});

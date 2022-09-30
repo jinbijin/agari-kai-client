@@ -1,18 +1,33 @@
-import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { IconComponent } from 'src/app/design/icon/icon.component';
-import { NavigationModule } from 'src/app/design/navigation/navigation.module';
+import { VersionStatus } from 'src/app/core/pwa/version-status.type';
+import { VersionUpdateService } from 'src/app/core/pwa/version-update.service';
+import { delayAndHoldIf } from 'src/app/core/rxjs/delay-and-hold-if';
+import { AGARI_ENVIRONMENT } from 'src/app/core/tokens/environment.token';
+import { WINDOW_LOCATION } from 'src/app/core/tokens/location.token';
 import { AGARI_NAVIGATION_ITEMS } from 'src/app/routing/tokens/agari-navigation-items.token';
 
 @Component({
-  standalone: true,
-  // eslint-disable-next-line @angular-eslint/component-selector
-  selector: 'aside[agariSidebar]',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
-  imports: [CommonModule, RouterModule, IconComponent, NavigationModule],
 })
 export class AgariSidebarComponent {
+  readonly #versionStatusService = inject(VersionUpdateService);
+  readonly #location = inject(WINDOW_LOCATION);
+
   readonly navigationItems$ = inject(AGARI_NAVIGATION_ITEMS);
+  readonly incomingVersion$ = this.#versionStatusService.incomingVersion$.pipe(
+    delayAndHoldIf((status) => status?.status === VersionStatus.Loading)
+  );
+  readonly currentVersion = inject(AGARI_ENVIRONMENT).version;
+
+  reload(status: VersionStatus): void {
+    switch (status) {
+      case VersionStatus.Ready:
+        this.#location.reload();
+        break;
+      case VersionStatus.Failed:
+        this.#versionStatusService.checkForUpdates();
+        break;
+    }
+  }
 }

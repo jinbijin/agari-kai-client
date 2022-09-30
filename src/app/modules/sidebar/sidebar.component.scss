@@ -1,3 +1,20 @@
+@use '@angular/material' as mat;
+@use '/src/scss/palettes';
+
 :host {
   display: contents;
+}
+
+h1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.active {
+  background: rgba($color: mat.get-color-from-palette(palettes.$primary), $alpha: 0.12) !important;
+
+  &:hover,
+  &:focus {
+    background: rgba($color: mat.get-color-from-palette(palettes.$primary), $alpha: 0.16) !important;
+  }
 }
