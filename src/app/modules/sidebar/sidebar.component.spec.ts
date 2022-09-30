@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { VersionUpdateService } from '../../core/pwa/version-update.service';
+import { DELAY_AND_HOLD_CONFIG } from '../../core/tokens/delay-and-hold-config.token';
 import { AGARI_ENVIRONMENT } from '../../core/tokens/environment.token';
 import { WINDOW_LOCATION } from '../../core/tokens/location.token';
 import { AgariNavigationItem } from '../../routing/tokens/agari-navigation-item.type';
@@ -35,6 +36,10 @@ describe('AgariSidebarComponent', () => {
         {
           provide: WINDOW_LOCATION,
           useClass: LocationStub,
+        },
+        {
+          provide: DELAY_AND_HOLD_CONFIG,
+          useValue: { delayFor: 0, holdFor: 0 },
         },
       ],
     });
@@ -77,6 +82,8 @@ describe('AgariSidebarComponent', () => {
   });
 });
 
-class VersionUpdateServiceStub {}
+class VersionUpdateServiceStub {
+  incomingVersion$ = of();
+}
 
 class LocationStub {}

@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { VersionStatus } from 'src/app/core/pwa/version-status.type';
 import { VersionUpdateService } from 'src/app/core/pwa/version-update.service';
+import { delayAndHoldIf } from 'src/app/core/rxjs/delay-and-hold-if';
 import { AGARI_ENVIRONMENT } from 'src/app/core/tokens/environment.token';
 import { WINDOW_LOCATION } from 'src/app/core/tokens/location.token';
 import { AGARI_NAVIGATION_ITEMS } from 'src/app/routing/tokens/agari-navigation-items.token';
@@ -15,7 +16,9 @@ export class AgariSidebarComponent {
   readonly #location = inject(WINDOW_LOCATION);
 
   readonly navigationItems$ = inject(AGARI_NAVIGATION_ITEMS);
-  readonly incomingVersion$ = this.#versionStatusService.incomingVersion$;
+  readonly incomingVersion$ = this.#versionStatusService.incomingVersion$.pipe(
+    delayAndHoldIf((status) => status?.status === VersionStatus.Loading)
+  );
   readonly currentVersion = inject(AGARI_ENVIRONMENT).version;
 
   reload(status: VersionStatus): void {

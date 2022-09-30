@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { MaterialConfigModule } from './material-config/material-config.module';
 import { providersFromModule } from './providers-from-module';
 import { PwaModule } from './pwa/pwa.module';
+import { DELAY_AND_HOLD_CONFIG } from './tokens/delay-and-hold-config.token';
 import { AGARI_ENVIRONMENT } from './tokens/environment.token';
 import { WINDOW_LOCATION } from './tokens/location.token';
 
@@ -25,6 +26,10 @@ export class CoreModule {
         {
           provide: WINDOW_LOCATION,
           useValue: location,
+        },
+        {
+          provide: DELAY_AND_HOLD_CONFIG,
+          useValue: { delayFor: 400, holdFor: 500 },
         },
       ],
     };
