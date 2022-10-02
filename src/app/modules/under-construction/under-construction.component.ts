@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  standalone: true,
   templateUrl: './under-construction.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
 export class UnderConstructionComponent {}
