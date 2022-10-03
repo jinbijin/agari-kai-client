@@ -1,0 +1,11 @@
+<mat-nav-list>
+  <ng-container *ngFor="let tournamentId of tournamentIds$ | async">
+    <a mat-list-item *ngIf="tournamentId | overviewItem | async as tournament">
+      <mat-icon mat-list-icon fontIcon="table"></mat-icon>
+      <div mat-line>
+        {{ tournament.name ?? 'Unnamed tournament' }}
+      </div>
+      <div mat-line>Last modified {{ tournament._updatedAt | dateTimeFromIso | dateTimeToRelative }}</div>
+    </a>
+  </ng-container>
+</mat-nav-list>

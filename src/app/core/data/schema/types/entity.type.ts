@@ -3,7 +3,7 @@ import { Uuid } from 'src/app/common/uuid';
 
 interface EntityBase {
   _id: Uuid;
-  _version: number;
+  _version?: number;
   _updatedAt: UtcDateTime;
 }
 

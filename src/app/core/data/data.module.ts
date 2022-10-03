@@ -3,7 +3,7 @@ import { AgariDb } from './schema/agari.db';
 import { AgariDbVersion } from './schema/versions/agari-db-version.type';
 import { AGARI_DB_VERSIONS } from './schema/versions/agari-db-versions.token';
 
-const versions: AgariDbVersion[] = [{ version: 1, schema: { tournaments: '++_version, [_id+_version]' } }];
+const versions: AgariDbVersion[] = [{ version: 1, schema: { tournaments: '++_version, _id, [_id+_version]' } }];
 
 @NgModule({})
 export class DataModule {
