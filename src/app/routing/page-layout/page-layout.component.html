@@ -1,4 +1,7 @@
 <mat-toolbar>
+  <a mat-icon-button *ngIf="parentUrl$ | async as parentUrl" [routerLink]="parentUrl" aria-label="Navigate to tournaments overview page">
+    <mat-icon fontIcon="chevron_left"></mat-icon>
+  </a>
   <router-outlet name="title" #titleOutlet="outlet"></router-outlet>
   <span *ngIf="!titleOutlet.isActivated">{{ title$ | async }}</span>
   <span class="toolbar-spacer"></span>

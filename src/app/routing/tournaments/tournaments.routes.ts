@@ -8,6 +8,7 @@ export const routes: Routes = [
   {
     path: ':id/edit',
     children: [mainPageRoute([{ path: '', outlet: 'title', component: TournamentEditTitleComponent }])],
+    data: { parentUrl: '/tournaments' },
   },
   mainPageRoute([
     { path: '', component: TournamentOverviewComponent },
