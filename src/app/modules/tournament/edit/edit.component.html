@@ -1,0 +1,8 @@
+<nav mat-tab-nav-bar>
+  <a mat-tab-link [routerLink]="['format']">Format</a>
+  <a mat-tab-link [routerLink]="['schedule']">Schedule</a>
+  <a mat-tab-link [routerLink]="['participants']">Participants</a>
+</nav>
+<mat-tab-nav-panel #tabPanel>
+  <router-outlet></router-outlet>
+</mat-tab-nav-panel>
