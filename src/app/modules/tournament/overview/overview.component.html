@@ -1,6 +1,6 @@
 <mat-nav-list>
   <ng-container *ngFor="let tournamentId of tournamentIds$ | async">
-    <a mat-list-item *ngIf="tournamentId | overviewItem | async as tournament">
+    <a mat-list-item *ngIf="tournamentId | overviewItem | async as tournament" [routerLink]="[tournamentId, 'edit']">
       <mat-icon mat-list-icon fontIcon="table"></mat-icon>
       <div mat-line>
         {{ tournament.name ?? 'Unnamed tournament' }}

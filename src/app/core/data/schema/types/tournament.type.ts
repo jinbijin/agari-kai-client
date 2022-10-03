@@ -1,3 +1,3 @@
 export interface Tournament {
-  name: string;
+  name: string | null;
 }
