@@ -7,6 +7,7 @@ type EntityType = 'tournament';
 export interface EntityRecord {
   id: Uuid;
   type: EntityType;
+  revisionId: number;
 }
 
 interface EntityBase {

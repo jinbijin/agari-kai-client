@@ -10,6 +10,13 @@ export const TOURNAMENT_IDS_QUERY = new InjectionToken<Observable<Uuid[]>>('tour
   providedIn: DataModule,
   factory: () => {
     const db = inject(AgariDb);
-    return promote(liveQuery(() => db.tournaments.orderBy('_id').uniqueKeys())) as Observable<Uuid[]>;
+    return promote(
+      liveQuery(() =>
+        db.entities
+          .orderBy('type')
+          .filter((x) => x.type === 'tournament')
+          .primaryKeys()
+      )
+    );
   },
 });
