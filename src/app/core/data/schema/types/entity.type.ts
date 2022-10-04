@@ -1,9 +1,8 @@
 import { Uuid } from 'src/app/common/uuid';
 
-type EntityType = 'tournament';
+export type EntityType = 'tournament';
 
-// TODO rename to Entity when other type is moved
-export interface EntityRecord {
+export interface Entity {
   id: Uuid;
   type: EntityType;
   revisionId: number;
