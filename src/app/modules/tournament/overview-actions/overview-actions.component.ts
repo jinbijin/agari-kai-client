@@ -2,10 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DateTime } from 'luxon';
-import { toUtcDateTime } from 'src/app/common/utc-date-time';
-import { uuid } from 'src/app/common/uuid';
-import { AgariDb } from 'src/app/core/data/schema/agari.db';
+import { CREATE_TOURNAMENT_COMMAND } from 'src/app/core/data/commands/create-tournament.command';
 
 @Component({
   selector: 'agari-tournament-overview-actions',
@@ -15,13 +12,12 @@ import { AgariDb } from 'src/app/core/data/schema/agari.db';
   standalone: true,
 })
 export class TournamentOverviewActionsComponent {
-  readonly #db = inject(AgariDb);
   readonly #router = inject(Router);
   readonly #activatedRoute = inject(ActivatedRoute);
+  readonly #createTournamentCommand = inject(CREATE_TOURNAMENT_COMMAND);
 
   async createTournament(): Promise<void> {
-    const tournamentId = uuid();
-    await this.#db.tournaments.add({ _id: tournamentId, _updatedAt: toUtcDateTime(DateTime.now()) });
+    const tournamentId = await this.#createTournamentCommand();
     await this.#router.navigate([tournamentId, 'edit'], { relativeTo: this.#activatedRoute });
   }
 }

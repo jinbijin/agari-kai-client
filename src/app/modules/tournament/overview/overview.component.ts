@@ -3,9 +3,8 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
-import { liveQuery } from 'dexie';
 import { LuxonModule } from 'luxon-angular';
-import { AgariDb } from 'src/app/core/data/schema/agari.db';
+import { TOURNAMENT_IDS_QUERY } from 'src/app/core/data/queries/tournament-ids.query';
 import { TournamentOverviewItemPipe } from './overview-item.pipe';
 
 @Component({
@@ -16,7 +15,5 @@ import { TournamentOverviewItemPipe } from './overview-item.pipe';
   standalone: true,
 })
 export class TournamentOverviewComponent {
-  readonly #db = inject(AgariDb);
-
-  readonly tournamentIds$ = liveQuery(() => this.#db.tournaments.orderBy('_id').uniqueKeys());
+  readonly tournamentIds$ = inject(TOURNAMENT_IDS_QUERY);
 }

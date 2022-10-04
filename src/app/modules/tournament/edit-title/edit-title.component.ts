@@ -4,10 +4,12 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ActivatedRoute } from '@angular/router';
-import { DateTime } from 'luxon';
-import { toUtcDateTime } from 'src/app/common/utc-date-time';
-import { Uuid } from 'src/app/common/uuid';
-import { AgariDb } from 'src/app/core/data/schema/agari.db';
+import { take } from 'rxjs/operators';
+import { isUuid } from 'src/app/common/uuid';
+import { UPDATE_TOURNAMENT_NAME_COMMAND } from 'src/app/core/data/commands/update-tournament-name.command';
+import { TOURNAMENT_BY_ID_QUERY } from 'src/app/core/data/queries/tournament-by-id.query';
+import { Entity } from 'src/app/core/data/schema/types/entity.type';
+import { Tournament } from 'src/app/core/data/schema/types/tournament.type';
 
 @Component({
   selector: 'agari-tournament-edit-title',
@@ -18,28 +20,25 @@ import { AgariDb } from 'src/app/core/data/schema/agari.db';
   standalone: true,
 })
 export class TournamentEditTitleComponent implements OnInit {
-  readonly #db = inject(AgariDb);
   readonly #activatedRoute = inject(ActivatedRoute);
   readonly #changeDetectorRef = inject(ChangeDetectorRef);
+  readonly #tournamentByIdQuery = inject(TOURNAMENT_BY_ID_QUERY);
+  readonly #updateTournamentNameCommand = inject(UPDATE_TOURNAMENT_NAME_COMMAND);
   nameControl: FormControl<string | null> | null = null;
 
   ngOnInit(): void {
-    void this.#initializeControl();
+    const id = this.#activatedRoute.snapshot.paramMap.get('id');
+    if (!id || !isUuid(id)) {
+      throw new Error('Invalid id.');
+    }
+    this.#tournamentByIdQuery(id)
+      .pipe(take(1))
+      .subscribe((tournament) => this.#initializeControl(tournament));
   }
 
-  async #initializeControl(): Promise<void> {
-    const updates = await this.#db.tournaments
-      .orderBy(['_id', '_version'])
-      .filter((x) => x._id === this.#activatedRoute.snapshot.paramMap.get('id'))
-      .toArray();
-    const tournament = updates.reduce((previous, current) => ({ ...previous, ...current }));
+  #initializeControl(tournament: Entity<Tournament>): void {
     this.nameControl = new FormControl(tournament.name ?? null, { nonNullable: true, updateOn: 'blur' });
-    this.nameControl.valueChanges.subscribe((value) => this.#updateValue(tournament._id, value));
+    this.nameControl.valueChanges.subscribe((value) => this.#updateTournamentNameCommand(tournament._id, value || null));
     this.#changeDetectorRef.markForCheck();
-  }
-
-  async #updateValue(id: Uuid, value: string | null): Promise<void> {
-    console.log(id, value);
-    await this.#db.tournaments.add({ _id: id, _updatedAt: toUtcDateTime(DateTime.now()), name: value || null });
   }
 }
