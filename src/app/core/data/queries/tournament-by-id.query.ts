@@ -21,12 +21,7 @@ export const TOURNAMENT_BY_ID_QUERY = new InjectionToken<(value: Uuid) => Observ
       promote(
         liveQuery(async () => {
           return await db.transaction('r', db.entities, db.data, db.revisions, async () => {
-            const name = (
-              await db.data
-                .orderBy(['id', 'key', 'revisionId'])
-                .filter((x) => x.id === value && x.key === 'name')
-                .last()
-            )?.value as string;
+            const name = (await db.data.filter((x) => x.id === value && x.key === 'name').last())?.value as string;
             const firstRevisionId = (await db.entities.filter((x) => x.id === value).first())?.revisionId;
             const latestRevisionId =
               (
