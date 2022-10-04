@@ -7,9 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { isUuid } from 'src/app/common/uuid';
 import { UPDATE_TOURNAMENT_NAME_COMMAND } from 'src/app/core/data/commands/update-tournament-name.command';
-import { TOURNAMENT_BY_ID_QUERY } from 'src/app/core/data/queries/tournament-by-id.query';
-import { Entity } from 'src/app/core/data/schema/types/entity.type';
-import { Tournament } from 'src/app/core/data/schema/types/tournament.type';
+import { Tournament, TOURNAMENT_BY_ID_QUERY } from 'src/app/core/data/queries/tournament-by-id.query';
 
 @Component({
   selector: 'agari-tournament-edit-title',
@@ -36,7 +34,7 @@ export class TournamentEditTitleComponent implements OnInit {
       .subscribe((tournament) => this.#initializeControl(tournament));
   }
 
-  #initializeControl(tournament: Entity<Tournament>): void {
+  #initializeControl(tournament: Tournament): void {
     this.nameControl = new FormControl(tournament.name ?? null, { nonNullable: true, updateOn: 'blur' });
     this.nameControl.valueChanges.subscribe((value) => this.#updateTournamentNameCommand(tournament._id, value || null));
     this.#changeDetectorRef.markForCheck();

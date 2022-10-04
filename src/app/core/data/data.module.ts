@@ -5,11 +5,10 @@ import { AGARI_DB_VERSIONS } from './schema/versions/agari-db-versions.token';
 
 const versions: AgariDbVersion[] = [
   {
-    version: 4 /* TODO revert to 1 */,
+    version: 1,
     schema: {
-      tournaments: '++_version, _id, [_id+_version]',
       entities: 'id, type',
-      data: 'id, [id+revisionId] ,[id+key+revisionId]',
+      data: '[id+key+revisionId], [id+revisionId]',
       revisions: '++id',
     },
   },
