@@ -5,6 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Subscription } from 'rxjs';
 import { UPDATE_TOURNAMENT_NAME_COMMAND } from 'src/app/core/data/commands/update-tournament-name.command';
+import { tournamentFromRouteParams } from 'src/app/routing/queries/tournament-from-route-params';
 import { createTournamentNameControl } from './tournament-name-control';
 
 @Component({
@@ -17,14 +18,15 @@ import { createTournamentNameControl } from './tournament-name-control';
 })
 export class TournamentEditTitleComponent implements OnInit, OnDestroy {
   readonly #subscriptions = new Subscription();
+  readonly #tournamentId = tournamentFromRouteParams()?._id;
   readonly #updateTournamentNameCommand = inject(UPDATE_TOURNAMENT_NAME_COMMAND);
-  tournamentControl = createTournamentNameControl();
+  nameControl = createTournamentNameControl();
 
   ngOnInit(): void {
     this.#subscriptions.add(
-      this.tournamentControl.valueChanges.subscribe((value) => {
-        if (value.id) {
-          this.#updateTournamentNameCommand(value.id, value.name || null);
+      this.nameControl.valueChanges.subscribe((value) => {
+        if (this.#tournamentId) {
+          this.#updateTournamentNameCommand(this.#tournamentId, value || null);
         }
       })
     );

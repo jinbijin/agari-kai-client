@@ -1,13 +1,7 @@
-import { inject } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { Tournament } from 'src/app/core/data/queries/tournament-by-id.query';
+import { FormControl } from '@angular/forms';
+import { tournamentFromRouteParams } from 'src/app/routing/queries/tournament-from-route-params';
 
-export function createTournamentNameControl() {
-  const activatedRoute = inject(ActivatedRoute);
-  const tournament: Tournament | undefined = activatedRoute.snapshot.data['tournament'];
-  return new FormGroup({
-    id: new FormControl({ value: tournament?._id, disabled: !tournament }, { nonNullable: true }),
-    name: new FormControl({ value: tournament?.name ?? null, disabled: !tournament }, { nonNullable: true, updateOn: 'blur' }),
-  });
+export function createTournamentNameControl(): FormControl<string | null> {
+  const tournament = tournamentFromRouteParams();
+  return new FormControl({ value: tournament?.name ?? null, disabled: !tournament }, { nonNullable: true, updateOn: 'blur' });
 }
