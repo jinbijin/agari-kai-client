@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { TournamentResolver } from 'src/app/core/data/resolvers/tournament.resolver';
 import { TournamentEditTitleComponent } from 'src/app/modules/tournament/edit-title/edit-title.component';
 import { TournamentEditComponent } from 'src/app/modules/tournament/edit/edit.component';
 import { TournamentOverviewActionsComponent } from 'src/app/modules/tournament/overview-actions/overview-actions.component';
@@ -8,7 +9,7 @@ import { mainPageRoute } from '../page-layout/main-page-route';
 
 export const routes: Routes = [
   {
-    path: ':id/edit',
+    path: ':tournamentId/edit',
     children: [
       mainPageRoute([
         {
@@ -29,6 +30,7 @@ export const routes: Routes = [
       ]),
     ],
     data: { parentUrl: '/tournaments' },
+    resolve: { tournament: TournamentResolver },
   },
   mainPageRoute([
     { path: '', component: TournamentOverviewComponent },

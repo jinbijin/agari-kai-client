@@ -1,13 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ActivatedRoute } from '@angular/router';
-import { take } from 'rxjs/operators';
-import { isUuid } from 'src/app/common/uuid';
+import { Subscription } from 'rxjs';
 import { UPDATE_TOURNAMENT_NAME_COMMAND } from 'src/app/core/data/commands/update-tournament-name.command';
-import { Tournament, TOURNAMENT_BY_ID_QUERY } from 'src/app/core/data/queries/tournament-by-id.query';
+import { createTournamentNameControl } from './tournament-name-control';
 
 @Component({
   selector: 'agari-tournament-edit-title',
@@ -17,26 +15,22 @@ import { Tournament, TOURNAMENT_BY_ID_QUERY } from 'src/app/core/data/queries/to
   imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule],
   standalone: true,
 })
-export class TournamentEditTitleComponent implements OnInit {
-  readonly #activatedRoute = inject(ActivatedRoute);
-  readonly #changeDetectorRef = inject(ChangeDetectorRef);
-  readonly #tournamentByIdQuery = inject(TOURNAMENT_BY_ID_QUERY);
+export class TournamentEditTitleComponent implements OnInit, OnDestroy {
+  readonly #subscriptions = new Subscription();
   readonly #updateTournamentNameCommand = inject(UPDATE_TOURNAMENT_NAME_COMMAND);
-  nameControl: FormControl<string | null> | null = null;
+  tournamentControl = createTournamentNameControl();
 
   ngOnInit(): void {
-    const id = this.#activatedRoute.snapshot.paramMap.get('id');
-    if (!id || !isUuid(id)) {
-      throw new Error('Invalid id.');
-    }
-    this.#tournamentByIdQuery(id)
-      .pipe(take(1))
-      .subscribe((tournament) => this.#initializeControl(tournament));
+    this.#subscriptions.add(
+      this.tournamentControl.valueChanges.subscribe((value) => {
+        if (value.id) {
+          this.#updateTournamentNameCommand(value.id, value.name || null);
+        }
+      })
+    );
   }
 
-  #initializeControl(tournament: Tournament): void {
-    this.nameControl = new FormControl(tournament.name ?? null, { nonNullable: true, updateOn: 'blur' });
-    this.nameControl.valueChanges.subscribe((value) => this.#updateTournamentNameCommand(tournament._id, value || null));
-    this.#changeDetectorRef.markForCheck();
+  ngOnDestroy(): void {
+    this.#subscriptions.unsubscribe();
   }
 }
