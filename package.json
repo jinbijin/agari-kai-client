@@ -15,6 +15,7 @@
     "watch": "ng build --watch --configuration development",
     "watch:prod": "ng build --watch --configuration production",
     "test": "jest",
+    "test:watch": "jest --watch",
     "test:ci": "jest --ci",
     "test:coverage": "jest --coverage",
     "format:check": "prettier . --check",
