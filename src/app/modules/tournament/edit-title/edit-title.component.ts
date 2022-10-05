@@ -5,7 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Subscription } from 'rxjs';
 import { UPDATE_TOURNAMENT_NAME_COMMAND } from 'src/app/core/data/commands/update-tournament-name.command';
-import { tournamentFromRouteParams } from 'src/app/routing/queries/tournament-from-route-params';
+import { tournamentFromRouteParams } from 'src/app/routing/tournaments/tournament-from-route-params';
 import { createTournamentNameControl } from './tournament-name-control';
 
 @Component({
