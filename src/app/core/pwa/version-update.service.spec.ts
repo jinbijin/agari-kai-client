@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { SwUpdate, VersionEvent } from '@angular/service-worker';
 import { Observable } from 'rxjs';
-import { TestScheduler } from 'rxjs/testing';
+import { createTestScheduler } from '../../testing/create-test-scheduler';
 import { VersionStatus } from './version-status.type';
 import { VersionUpdateService } from './version-update.service';
 
@@ -13,7 +13,7 @@ describe('VersionUpdateService', () => {
 
   it('should map NO_NEW_VERSION_DETECTED', () => {
     const service = TestBed.inject(VersionUpdateService);
-    new TestScheduler((actual, expected) => expect(actual).toEqual(expected)).run(({ expectObservable }) => {
+    createTestScheduler().run(({ expectObservable }) => {
       expectObservable(service.incomingVersion$).toBe('a', { a: undefined });
     });
   });
@@ -22,7 +22,7 @@ describe('VersionUpdateService', () => {
     const service = TestBed.inject(VersionUpdateService);
     const stub = TestBed.inject(SwUpdateStub);
     stub.versionEvent = { type: 'VERSION_DETECTED', version: { hash: 'hash', appData: { version: '0.0.0' } } };
-    new TestScheduler((actual, expected) => expect(actual).toEqual(expected)).run(({ expectObservable }) => {
+    createTestScheduler().run(({ expectObservable }) => {
       expectObservable(service.incomingVersion$).toBe('a', { a: { status: VersionStatus.Loading, version: '0.0.0' } });
     });
   });
@@ -35,7 +35,7 @@ describe('VersionUpdateService', () => {
       currentVersion: { hash: 'hash', appData: { version: '0.0.0' } },
       latestVersion: { hash: 'hash', appData: { version: '1.0.0' } },
     };
-    new TestScheduler((actual, expected) => expect(actual).toEqual(expected)).run(({ expectObservable }) => {
+    createTestScheduler().run(({ expectObservable }) => {
       expectObservable(service.incomingVersion$).toBe('a', { a: { status: VersionStatus.Ready, version: '1.0.0' } });
     });
   });
@@ -44,7 +44,7 @@ describe('VersionUpdateService', () => {
     const service = TestBed.inject(VersionUpdateService);
     const stub = TestBed.inject(SwUpdateStub);
     stub.versionEvent = { type: 'VERSION_INSTALLATION_FAILED', version: { hash: 'hash', appData: { version: '0.0.0' } }, error: '' };
-    new TestScheduler((actual, expected) => expect(actual).toEqual(expected)).run(({ expectObservable }) => {
+    createTestScheduler().run(({ expectObservable }) => {
       expectObservable(service.incomingVersion$).toBe('a', { a: { status: VersionStatus.Failed, version: '0.0.0' } });
     });
   });

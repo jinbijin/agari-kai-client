@@ -1,7 +1,7 @@
 import { inject, InjectionToken } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { Observable } from 'rxjs';
-import { TestScheduler } from 'rxjs/testing';
+import { createTestScheduler } from '../../testing/create-test-scheduler';
 import { DELAY_AND_HOLD_CONFIG } from '../tokens/delay-and-hold-config.token';
 import { delayAndHoldIf } from './delay-and-hold-if';
 
@@ -16,7 +16,7 @@ const OUTPUT_OBSERVABLE: InjectionToken<Observable<boolean>> = new InjectionToke
 
 describe('delayAndHoldIf', () => {
   it('should delay and hold selected values', () => {
-    new TestScheduler((actual, expected) => expect(actual).toEqual(expected)).run(({ cold, expectObservable }) => {
+    createTestScheduler().run(({ cold, expectObservable }) => {
       TestBed.configureTestingModule({
         providers: [
           { provide: INPUT_OBSERVABLE, useValue: cold('a--b--(c|)', { a: false, b: true, c: false }) },
@@ -30,7 +30,7 @@ describe('delayAndHoldIf', () => {
   });
 
   it('should delay and hold selected values if repeated', () => {
-    new TestScheduler((actual, expected) => expect(actual).toEqual(expected)).run(({ cold, expectObservable }) => {
+    createTestScheduler().run(({ cold, expectObservable }) => {
       TestBed.configureTestingModule({
         providers: [
           { provide: INPUT_OBSERVABLE, useValue: cold('a--bbb(c|)', { a: false, b: true, c: false }) },
@@ -44,7 +44,7 @@ describe('delayAndHoldIf', () => {
   });
 
   it('should skip values if delayed past next value', () => {
-    new TestScheduler((actual, expected) => expect(actual).toEqual(expected)).run(({ cold, expectObservable }) => {
+    createTestScheduler().run(({ cold, expectObservable }) => {
       TestBed.configureTestingModule({
         providers: [
           { provide: INPUT_OBSERVABLE, useValue: cold('a--b-(c|)', { a: false, b: true, c: false }) },

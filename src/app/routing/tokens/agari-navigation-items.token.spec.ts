@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { TestScheduler } from 'rxjs/testing';
+import { createTestScheduler } from '../../testing/create-test-scheduler';
 import { AGARI_NAVIGATION_ITEMS, PROVIDE_AGARI_NAVIGATION_ITEMS } from './agari-navigation-items.token';
 import { AGARI_ROUTES } from './agari-routes.token';
 
@@ -25,10 +25,9 @@ describe('AGARI_NAVIGATION_ITEMS', () => {
   });
 
   it('should return the correct items', () => {
-    const testScheduler = new TestScheduler((actual, expected) => expect(actual).toEqual(expected));
     const navigationItems$ = TestBed.inject(AGARI_NAVIGATION_ITEMS);
 
-    testScheduler.run(({ expectObservable }) => {
+    createTestScheduler().run(({ expectObservable }) => {
       expectObservable(navigationItems$).toBe('(a|)', {
         a: [
           { icon: 'home', label: 'Home', testId: 'home', routerLink: ['/'], routerLinkActiveOptions: { exact: true } },
