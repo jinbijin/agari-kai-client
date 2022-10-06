@@ -2,12 +2,11 @@ import { EnvironmentInjector, Injectable } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { provideAs } from '../../../testing/provide-as';
 import { createTournamentNameControl } from './tournament-name-control';
 
 describe('createTournamentNameControl', () => {
   beforeEach(() => {
-    TestBed.configureTestingModule({ providers: [provideAs(ActivatedRouteStub, ActivatedRoute)] });
+    TestBed.configureTestingModule({ providers: [ActivatedRouteStub, { provide: ActivatedRoute, useExisting: ActivatedRouteStub }] });
   });
 
   it('should create', () => {

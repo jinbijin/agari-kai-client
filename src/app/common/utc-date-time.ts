@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { DateTime } from 'luxon';
 
 const typeBrand = Symbol('type');

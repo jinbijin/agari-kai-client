@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { Injectable } from '@angular/core';
 import { Dexie, Table } from 'dexie';
 import { Uuid } from 'src/app/common/uuid';

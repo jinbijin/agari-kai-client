@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { InjectionToken } from '@angular/core';
 import { AgariDbVersion } from './agari-db-version.type';
 

@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { AgariDb } from './schema/agari.db';
 import { AgariDbVersion } from './schema/versions/agari-db-version.type';
