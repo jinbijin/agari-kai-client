@@ -11,6 +11,14 @@ export function tryParseUuid(value: string): Uuid | undefined {
   return isUuid(value) ? value : undefined;
 }
 
+export function parseUuid(value: string): Uuid {
+  const uuid = tryParseUuid(value);
+  if (!uuid) {
+    throw new Error(`Could not parse "${value}" as Uuid.`);
+  }
+  return uuid;
+}
+
 export function uuid(): Uuid {
   return v4() as Uuid;
 }
