@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { v4, validate, version } from 'uuid';
 const typeBrand = Symbol('type');
 

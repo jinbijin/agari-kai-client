@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { inject, InjectionToken } from '@angular/core';
 import { liveQuery } from 'dexie';
 import { Observable } from 'rxjs';

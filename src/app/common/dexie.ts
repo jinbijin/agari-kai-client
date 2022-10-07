@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { Observable as DexieObservable } from 'dexie';
 import { Observable } from 'rxjs';
 
