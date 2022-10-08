@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <a mat-icon-button *ngIf="parentUrl$ | async as parentUrl" [routerLink]="parentUrl" aria-label="Navigate to parent page">
+  <a mat-icon-button *ngIf="parentUrl$ | async as parentUrl" [routerLink]="parentUrl" aria-label="Navigate to parent page" data-test-id="navigate-back">
     <mat-icon fontIcon="chevron_left"></mat-icon>
   </a>
   <router-outlet name="title" #titleOutlet="outlet"></router-outlet>

@@ -23,3 +23,7 @@ beforeEach(() => {
     });
   }
 });
+
+beforeEach(() => {
+  indexedDB.deleteDatabase('agariDb');
+});
