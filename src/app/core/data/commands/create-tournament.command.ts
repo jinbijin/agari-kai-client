@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 import { inject, InjectionToken } from '@angular/core';
 import { DateTime } from 'luxon';
 import { toUtcDateTime } from 'src/app/common/utc-date-time';
