@@ -3,10 +3,11 @@ import { RouterModule, ROUTES, TitleStrategy } from '@angular/router';
 import { providersFromModule } from '../core/providers-from-module';
 import { AgariSidebarComponent } from '../modules/sidebar/sidebar.component';
 import { SidebarModule } from '../modules/sidebar/sidebar.module';
+import { routes } from './agari.routes';
 import { AgariTitleRenderer } from './agari.title-renderer';
 import { AgariTitleStrategy } from './agari.title-strategy';
 import { PROVIDE_AGARI_NAVIGATION_ITEMS } from './tokens/agari-navigation-items.token';
-import { AGARI_ROUTES, PROVIDE_AGARI_ROUTES } from './tokens/agari-routes.token';
+import { AGARI_ROUTES } from './tokens/agari-routes.token';
 
 @NgModule({
   imports: [RouterModule, SidebarModule],
@@ -20,8 +21,8 @@ export class AgariRoutingModule {
         ...providersFromModule(RouterModule.forRoot([{ path: '', outlet: 'left', component: AgariSidebarComponent }])),
         AgariTitleRenderer,
         { provide: TitleStrategy, useClass: AgariTitleStrategy },
+        { provide: AGARI_ROUTES, useValue: routes },
         { provide: ROUTES, useExisting: AGARI_ROUTES, multi: true },
-        PROVIDE_AGARI_ROUTES,
         PROVIDE_AGARI_NAVIGATION_ITEMS,
       ],
     };

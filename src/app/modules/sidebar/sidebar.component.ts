@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { VersionStatus } from 'src/app/core/pwa/version-status.type';
 import { VersionUpdateService } from 'src/app/core/pwa/version-update.service';
 import { delayAndHoldIf } from 'src/app/core/rxjs/delay-and-hold-if';
@@ -9,6 +9,7 @@ import { AGARI_NAVIGATION_ITEMS } from 'src/app/routing/tokens/agari-navigation-
 @Component({
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AgariSidebarComponent {
   readonly #versionStatusService = inject(VersionUpdateService);
