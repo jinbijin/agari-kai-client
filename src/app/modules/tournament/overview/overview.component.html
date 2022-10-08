@@ -2,10 +2,10 @@
   <ng-container *ngFor="let tournamentId of tournamentIds$ | async">
     <a mat-list-item *ngIf="tournamentId | overviewItem | async as tournament" [routerLink]="[tournamentId, 'edit']">
       <mat-icon mat-list-icon fontIcon="table"></mat-icon>
-      <div mat-line>
+      <div mat-line data-test-id="tournament-name">
         {{ tournament.name ?? 'Unnamed tournament' }}
       </div>
-      <div mat-line>Last modified {{ tournament._updatedAt | dateTimeFromIso | dateTimeToRelative }}</div>
+      <div mat-line data-test-id="tournament-last-modified">Last modified {{ tournament._updatedAt | dateTimeFromIso | dateTimeToRelative }}</div>
     </a>
   </ng-container>
 </mat-nav-list>
