@@ -22,7 +22,7 @@
     [routerLinkActiveOptions]="navigationItem.routerLinkActiveOptions"
     attr.data-test-id="navigation-link-{{ navigationItem.testId }}"
   >
-    <mat-icon *ngIf="navigationItem.icon as icon" matListIcon [attr.fontIcon]="icon"></mat-icon>
+    <mat-icon *ngIf="navigationItem.icon as icon" matListIcon [fontIcon]="icon"></mat-icon>
     {{ navigationItem.label }}
   </a>
 </mat-nav-list>
