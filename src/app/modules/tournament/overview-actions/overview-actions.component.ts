@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
+import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CREATE_TOURNAMENT_COMMAND } from 'src/app/core/data/commands/create-tournament.command';
 
