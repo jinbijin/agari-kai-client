@@ -23,15 +23,8 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets",
-              "src/manifest.webmanifest",
-              "src/staticwebapp.config.json"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets", "src/manifest.webmanifest", "src/staticwebapp.config.json"],
+            "styles": ["src/styles.scss"],
             "scripts": [],
             "serviceWorker": true,
             "ngswConfigPath": "ngsw-config.json"
@@ -105,24 +98,15 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets",
-              "src/manifest.webmanifest"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets", "src/manifest.webmanifest"],
+            "styles": ["src/styles.scss"],
             "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         },
         "cypress-run": {
@@ -162,9 +146,7 @@
   },
   "cli": {
     "analytics": "4f3ece19-8e9f-4b38-b102-83046bc638bf",
-    "schematicCollections": [
-      "@angular-eslint/schematics"
-    ]
+    "schematicCollections": ["@angular-eslint/schematics"]
   },
   "schematics": {
     "@angular-eslint/schematics:application": {
