@@ -13,10 +13,7 @@ export const UPDATE_TOURNAMENT_NAME_COMMAND = new InjectionToken<(id: Uuid, valu
     factory: () => {
       const db = inject(AgariDb);
       return async (id: Uuid, value: string | null) => {
-        await db.transaction('rw', db.revisions, db.data, async () => {
-          const revisionId = await db.revisions.add({ updatedAt: toUtcDateTime(DateTime.now()) });
-          await db.data.add({ id, key: 'name', value, revisionId });
-        });
+        await db.tournaments.update(id, { _updatedAt: toUtcDateTime(DateTime.now()), name: value });
       };
     },
   }
