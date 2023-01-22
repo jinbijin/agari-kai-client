@@ -8,9 +8,7 @@ const versions: AgariDbVersion[] = [
   {
     version: 1,
     schema: {
-      entities: 'id, type',
-      data: '[id+key+revisionId], [id+revisionId]',
-      revisions: '++id',
+      tournaments: '_id',
     },
   },
 ];

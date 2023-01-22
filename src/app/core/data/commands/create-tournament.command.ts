@@ -12,10 +12,7 @@ export const CREATE_TOURNAMENT_COMMAND = new InjectionToken<() => Promise<Uuid>>
     const db = inject(AgariDb);
     return async () => {
       const tournamentId = uuid();
-      await db.transaction('rw', db.revisions, db.entities, async () => {
-        const revisionId = await db.revisions.add({ updatedAt: toUtcDateTime(DateTime.now()) });
-        await db.entities.add({ id: tournamentId, type: 'tournament', revisionId });
-      });
+      await db.tournaments.add({ _id: tournamentId, _updatedAt: toUtcDateTime(DateTime.now()), name: null });
       return tournamentId;
     };
   },
